@@ -13,28 +13,75 @@ class Portfolio extends Component {
   sell() {
     //send sell request
     //if success -> call parent reload
-    var url = "https://reqbin.com/echo/post/json";
+    var url = "http://localhost:3000/stocks/order";
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        alert("wow response: " + xhr.responseText);
+    var httprequest = new XMLHttpRequest();
+    httprequest.open("POST", url, true);
+    httprequest.setRequestHeader("Content-Type", "application/json");
+    var symbol = this.state.position.symbol;
+    httprequest.onreadystatechange = function () {
+      //Call a function when the state changes.
+      if (httprequest.readyState === 4 /* && httprequest.status === 200*/) {
+        if (httprequest.status === 200) {
+          alert("A sell order for " + symbol + " has been placed!");
+        } else {
+          alert(
+            "An error ocurred. Maybe all your " +
+              symbol +
+              " stocks are already trading. Try again later."
+          );
+        }
+        //console.log(httprequest.responseText);
+        //alert(JSON.stringify(httprequest.responseText));
       }
     };
-
-    var data =
-      '{   "symbol": "' + this.state.position.symbol + '",   "qty": 1}';
-
-    xhr.send(data);
+    httprequest.send(
+      //stocks/order?symbol=MSFT&qty=1&side=buy&type=market&time_in_force=day
+      JSON.stringify({
+        symbol: this.state.position.symbol,
+        qty: 1,
+        side: "sell",
+        type: "market",
+        time_in_force: "day",
+      })
+    );
   }
 
   buy() {
-    alert("xd");
+    //send buy request
+    //if success -> call parent reload
+    var url = "http://localhost:3000/stocks/order";
+
+    var httprequest = new XMLHttpRequest();
+    httprequest.open("POST", url, true);
+    httprequest.setRequestHeader("Content-Type", "application/json");
+    var symbol = this.state.position.symbol;
+    httprequest.onreadystatechange = function () {
+      //Call a function when the state changes.
+      if (httprequest.readyState === 4 /* && httprequest.status === 200*/) {
+        if (httprequest.status === 200) {
+          alert("A buy order for " + symbol + " has been placed!");
+        } else {
+          alert(
+            "An error ocurred. Maybe all your " +
+              symbol +
+              " stocks are already trading. Try again later."
+          );
+        }
+        //console.log(httprequest.responseText);
+        //alert(JSON.stringify(httprequest.responseText));
+      }
+    };
+    httprequest.send(
+      //stocks/order?symbol=MSFT&qty=1&side=buy&type=market&time_in_force=day
+      JSON.stringify({
+        symbol: this.state.position.symbol,
+        qty: 1,
+        side: "buy",
+        type: "market",
+        time_in_force: "day",
+      })
+    );
   }
 
   render() {
