@@ -1,5 +1,5 @@
 import Portfolio from "./Portfolio";
-import Market from "./Market";
+import Market from "./Market/Market";
 
 function App() {
   return (
