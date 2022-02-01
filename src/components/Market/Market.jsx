@@ -66,12 +66,10 @@ class Market extends Component {
       );
     }
     return (
-      <div className="row justify-content-md-center mt-5">
-        <div className="col-3 justify-content-center d-flex flex-column">
-          <h1 className="text-white text-center">Market</h1>
-          <MarketSearchForm searchCallback={this.searchCallback} />
-          {displayResult}
-        </div>
+      <div className="col-6 col-md-3 justify-content-md-center mt-5">
+        <h2 className="text-white text-center">Market</h2>
+        <MarketSearchForm searchCallback={this.searchCallback} />
+        {displayResult}
       </div>
     );
   }

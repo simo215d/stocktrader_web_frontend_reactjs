@@ -85,6 +85,8 @@ class Portfolio extends Component {
   }
 
   render() {
+    let plpc = this.state.position.unrealized_plpc * 100;
+    let plpcSmaller = (plpc + "").substring(0, 4);
     return (
       <tr>
         <td>
@@ -107,7 +109,7 @@ class Portfolio extends Component {
         <td>{this.state.position.qty}</td>
         <td>{this.state.position.cost_basis}</td>
         <td>{this.state.position.current_price}</td>
-        <td>{this.state.position.unrealized_plpc * 100}%</td>
+        <td>{plpcSmaller}%</td>
       </tr>
     );
   }
