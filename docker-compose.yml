@@ -4,5 +4,7 @@ services:
   papertrader_reactjs:
     build: .
     image: simo215d/papertrader_reactjs:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8001:3001"

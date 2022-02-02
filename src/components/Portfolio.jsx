@@ -17,7 +17,7 @@ class Portfolio extends Component {
   }
 
   loadBuyingPower() {
-    var url = "http://localhost:3000/account";
+    var url = "http://" + process.env.REACT_APP_BACKEND_ADDRESS + ":8000/account";
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -34,7 +34,8 @@ class Portfolio extends Component {
 
   loadPositions() {
     var loadedPositions = null;
-    var url = "http://localhost:3000/account/positions";
+    var url =
+      "http://" + process.env.REACT_APP_BACKEND_ADDRESS + ":8000/account/positions";
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {

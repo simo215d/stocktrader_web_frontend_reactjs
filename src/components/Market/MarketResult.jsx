@@ -24,7 +24,8 @@ class MarketResult extends Component {
     }
     //send buy request
     //if success -> call parent reload
-    var url = "http://localhost:3000/stocks/order";
+    var url =
+      "http://" + process.env.REACT_APP_BACKEND_ADDRESS + ":8000/stocks/order";
 
     var httprequest = new XMLHttpRequest();
     httprequest.open("POST", url, true);

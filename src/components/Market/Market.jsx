@@ -15,7 +15,11 @@ class Market extends Component {
       return;
     }
     //get the stock (price not included!)
-    var url = "http://localhost:3000/stocks?symbol=" + searchInput;
+    var url =
+      "http://" +
+      process.env.REACT_APP_BACKEND_ADDRESS +
+      ":8000/stocks?symbol=" +
+      searchInput;
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -31,7 +35,11 @@ class Market extends Component {
           //alert(JSON.stringify(this.state));
 
           //get price of stock
-          var url2 = "http://localhost:3000/stocks/price?symbol=" + searchInput;
+          var url2 =
+            "http://" +
+            process.env.REACT_APP_BACKEND_ADDRESS +
+            ":8000/stocks/price?symbol=" +
+            searchInput;
           var xhr2 = new XMLHttpRequest();
           xhr2.onreadystatechange = () => {
             if (xhr2.readyState === XMLHttpRequest.DONE) {
