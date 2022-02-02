@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  papertrader_reactjs:
+    build: .
+    image: simo215d/papertrader_reactjs:latest
+    ports:
+      - "8001:3001"
